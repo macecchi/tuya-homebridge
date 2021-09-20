@@ -198,6 +198,7 @@ class TuyaPlatform {
 
   //Handle device deletion, addition, status update
   async onMQTTMessage(message) {
+this.log.log(`MQTTMessage ${message.devId}`);
     if (message.bizCode) {
       if (message.bizCode == 'delete') {
         const uuid = this.api.hap.uuid.generate(message.devId);
@@ -210,6 +211,7 @@ class TuyaPlatform {
         this.addAccessory(device)
       }
     } else {
+this.log.log(`Refresh Device ${message.devId}`);
       this.refreshDeviceStates(message)
     }
   }
