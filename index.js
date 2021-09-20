@@ -219,7 +219,6 @@ class TuyaPlatform {
     const uuid = this.api.hap.uuid.generate(message.devId);
     const deviceAccessorie = this.deviceAccessories.get(uuid);
     if (deviceAccessorie) {
-      this.log.log(`Updating Device ${message.devId}: ${message}`);
       deviceAccessorie.updateState(message);
     }
   }
